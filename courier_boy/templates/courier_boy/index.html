@@ -1,0 +1,219 @@
+{% extends "cobase.html" %} {% block body %}
+<div class="container-fluid vh-100">
+    <br><br><br> {% if session['random_num'] and session['status'] == "accepted" %} your application is accepted. and to verify your account by use this number {{ session['random_num']}}
+    <li class="nav-item">
+        <!-- Button trigger modal -->
+        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModalToggle_v" href="#verify">
+            verify to click here.
+        </a>
+    </li>
+    <p>note: after verification please login again...</p>{% elif session['status'] == "accepted" and session['random_num'] == "" %}
+    <H1> {{session['status']}} </H1>
+    {% elif session['status']=="decline" %}
+    <div class="container-fluid vh-100">
+        <h1>
+            Welcome to Courier Management System,mr/mrs {{session['first_name']}}<br> your application is decline.
+
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" href="#profile">resubmit</a>
+
+        </h1>
+        <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, reiciendis magnam! Ducimus atque delectus nulla temporibus molestias? Perferendis eligendi quasi fuga blanditiis, adipisci facilis temporibus quis, quia deserunt ad iure.</p>
+    </div>
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalToggleLabel">
+                        <center> COURIER BOY APPLICATION </center>
+                    </h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <form action="courier_boy/resubmit" method="POST" class="row g-3 ">
+
+                        <div class="col-md-6 ">
+                            <label for="inputEmail4 " class="form-label ">First name <span style="color: red;">*</span></label>
+                            <input type="text " class="form-control " placeholder="First name " aria-label="First name " name="first_name" required onkeypress="return a(event);" value={{ session[ 'first_name'] }}>
+                        </div>
+                        <div class=" col-md-6 ">
+                            <label for="inputEmail4 " class="form-label ">Last name <span style="color: red; ">*</span></label>
+
+                            <input type="text " class="form-control " placeholder="Last name " aria-label="Last name " name="last_name" required onkeypress="return a(event); " value={{ session[ 'last_name'] }}>
+                        </div>
+
+                        <div class="col-md-6 ">
+                            <label for="inputEmail4 " class="form-label ">Email <span style="color: red; ">*</span></label>
+                            <input type="email " class="form-control " id="inputEmail4 " placeholder="Example@gmail.com " name="email" required value={{ session[ 'email'] }}>
+                        </div>
+
+                        <div class="col-md-6 ">
+                            <label for="inputPassword4 " class="form-label ">Phone number <span style="color: red; ">*</span></label>
+                            <input type="text " class="form-control " id="inputPassword4 " placeholder="+91 12345 67890 " name="phone" required onkeypress="return event.charCode>=48 && event.charCode<=57 " value={{ session[ 'phone'] }}>
+                        </div>
+                        <div class="col-md-6 ">
+                            <label class="form-label ">Password <span style="color: red; ">*</span></label>
+                            <input type="password" class="form-control " placeholder="Enter password " name="password" required value={{ session[ 'password'] }}>
+                        </div>
+                        <div class="col-md-6 ">
+                            <label for="inputState " class="form-label ">City</label>
+                            <select id="inputState " class="form-select " name="city" value={{ session[ 'city'] }}>
+                                <option selected>Bagalkot</option>
+                                <option>Bellary</option>
+                                <option>Bangalore Rural</option>
+                                <option>Bangalore Urban</option>
+                                <option>Bidar</option>
+                                <option>Chamarajanagar</option>
+                                <option>Chikballapur</option>
+                                <option>Chikmagalur</option>
+                                <option>Chitradurga</option>
+                                <option>Dakshina Kannada</option>
+                                <option>Davangere</option>
+                                <option>Dharwad</option>
+                                <option>Gadag</option>
+                                <option>Hassan</option>
+                                <option>Haveri</option>
+                                <option>Kalaburagi </option>
+                                <option>Kodagu</option>
+                                <option>Kolar</option>
+                                <option>Koppal</option>
+                                <option>Mandya</option>
+                                <option>Mysore</option>
+                                <option>Raichur</option>
+                                <option>Ramanagara</option>
+                                <option>Shivamogga </option>
+                                <option>Tumkur</option>
+                                <option>Udupi</option>
+                                <option>Uttara Kannada</option>
+                                <option>Vijayapura </option>
+                                <option>Yadgir</option>
+
+                                </select>
+                        </div>
+                        <div class="col-12 ">
+                            <label for="inputAddress " class="form-label ">Address <span style="color: red; ">*</span></label>
+                            <textarea class="form-control " id="floatingTextarea " name="address" required>{{ session[ 'address'] }}</textarea>
+                        </div>
+
+
+
+                        <div class="col-12 ">
+                            <center>
+                                <button type="submit " class="btn btn-primary ">Apply</button>
+
+                            </center>
+                        </div>
+                    </form>
+                </div>
+                <div class=" modal-footer ">
+                    <button class="btn btn-primary " data-bs-target="#logout " data-bs-toggle="modal " data-bs-dismiss="modal ">back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    {%else%}
+    <div class="container-fluid vh-100 ">
+        <h1>
+            Welcome to Courier Management System,mr/mrs {{session['first_name']}}<br> your application is in being proccess...
+        </h1>
+        <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, reiciendis magnam! Ducimus atque delectus nulla temporibus molestias? Perferendis eligendi quasi fuga blanditiis, adipisci facilis temporibus quis, quia deserunt ad iure.</p>
+    </div>
+
+    {% endif %}
+
+    <!-- virefication -->
+    <div class="modal fade" id="exampleModalToggle_v" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalToggleLabel">
+                        <center> verification </center>
+                    </h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <form action="courier_boy/verification" method="POST" class="row g-3 ">
+
+                        <div class="col-12 ">
+                            <label for="inputEmail4 " class="form-label d-flex ">verification code: <span style="color: red;">*</span></label>
+                            <input type="text " class="form-control " placeholder="********" name="random_num" required>
+                        </div>
+
+
+
+                        <div class="col-12 ">
+                            <center>
+                                <button type="submit " class="btn btn-primary ">Apply</button>
+                            </center>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- profile -->
+<div class="modal fade" id="exampleModalToggle_p" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalToggleLabel">Profile</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <fieldset disabled>
+                        <div class="row">
+                            <div class="col-7">
+                                <label for="disabledTextInput" class="form-label">Name</label>
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder={{ session[ 'first_name'] }}>
+                            </div>
+                            <div class="col-5 mb-3">
+                                <label for="disabledTextInput" class="form-label">phone number</label>
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder={{ session[ 'phone'] }}>
+                            </div>
+                            <div class="col-7 mb-3">
+                                <label for="disabledTextInput" class="form-label">Email</label>
+                                <input type="email" id="disabledTextInput" class="form-control" placeholder={{ session[ 'email'] }}>
+
+                            </div>
+                            <div class="col-5 mb-3">
+                                <label for="disabledTextInput" class="form-label">Password</label>
+                                <input type="password" id="disabledTextInput" class="form-control" placeholder='********'>
+                            </div>
+                            <div class="mb-3">
+                                <label for="disabledTextInput" class="form-label">address</label>
+                                <input type="password" id="disabledTextInput" class="form-control" placeholder={{ session[ 'city'] }}>
+                            </div>
+                            <div class="mb-3">
+                                <label for="disabledTextInput" class="form-label">Security question</label>
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder={{ session[ 'question'] }}>
+                            </div>
+                            <div class="mb-3">
+                                <label for="disabledTextInput" class="form-label">Answer</label>
+                                <input type="password" id="disabledTextInput" class="form-control" placeholder={{ session[ 'answer'] }}>
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+            <div class=" modal-footer">
+                <button class="btn btn-primary" data-bs-target="#logout" data-bs-toggle="modal" data-bs-dismiss="modal">back</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--End modal-->{% endblock %}

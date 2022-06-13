@@ -1,0 +1,79 @@
+{% extends "cobase.html" %} {% block body %}
+<div class="container vh-100"><br><br><br>
+
+
+    <br> {% if contacts %} {% for contact in contacts %}
+
+    <div class="card text-dark bg-light mb-3  " style="max-width: 40rem;">
+        <div class="card">
+            <div class="card-header">courier</div>
+            <div class="card-body">
+                <p class="card-text">
+                    <pre>
+Tracking id   : {{ contact.tid }}                   receiver_name      : {{ contact.r_name }}
+Quantity      : {{ contact.Qty }}                   receiver_number    : {{ contact.r_num }}
+delivery type : {{ contact.del_type}}     receiver_address   : {{ contact.r_add}}
+shipment type : {{ contact.ship_type}}     receiver_city      : {{ contact.r_city}}
+weight        : {{ contact.weight}}                 receiver_state     : {{ contact.r_state}}
+                                    receiver_zip       : {{ contact.r_zip}}
+
+                        </pre>
+                </p>
+            </div>
+        </div>
+    </div>
+    <br> {% endfor %} {% else %} no transaction available {% endif %}
+    <!-- profile -->
+    <div class="modal fade" id="exampleModalToggle_p" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalToggleLabel">Profile</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <fieldset disabled>
+                            <div class="row">
+                                <div class="col-7">
+                                    <label for="disabledTextInput" class="form-label">Name</label>
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder={{ session[ 'first_name'] }}>
+                                </div>
+                                <div class="col-5 mb-3">
+                                    <label for="disabledTextInput" class="form-label">phone number</label>
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder={{ session[ 'phone'] }}>
+                                </div>
+                                <div class="col-7 mb-3">
+                                    <label for="disabledTextInput" class="form-label">Email</label>
+                                    <input type="email" id="disabledTextInput" class="form-control" placeholder={{ session[ 'email'] }}>
+
+                                </div>
+                                <div class="col-5 mb-3">
+                                    <label for="disabledTextInput" class="form-label">Password</label>
+                                    <input type="password" id="disabledTextInput" class="form-control" placeholder='********'>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">address</label>
+                                    <input type="password" id="disabledTextInput" class="form-control" placeholder={{ session[ 'city'] }}>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Security question</label>
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder={{ session[ 'question'] }}>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Answer</label>
+                                    <input type="password" id="disabledTextInput" class="form-control" placeholder={{ session[ 'answer'] }}>
+                                </div>
+
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+                <div class=" modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#logout" data-bs-toggle="modal" data-bs-dismiss="modal">back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>{% endblock %}

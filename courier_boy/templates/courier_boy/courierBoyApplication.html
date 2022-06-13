@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>application</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{{ url_for('static', filename='vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- vender js -->
+    <script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script type="text/javascript">
+        function a(event) {
+            var ch = event.which;
+            if (ch > 31 && ch != 32 && (ch < 65 || ch > 90) && (ch < 97 || ch > 122)) {
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body class="my_img" style="background-image: url('../../static/image/contact-us.jpg');background-position: center; background-size:cover;">
+    <div class=" container ">
+        <div class="row " style="float: right;">
+            <div class="col-md-5 ">
+                <br> {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+                <div class="alert alert-success alert-dismissible fade show " role="alert ">
+                    {{ message }}
+                    <!-- <button type="button " class="close " data-dismiss="alert " aria-label="Close "> -->
+                    <!-- <span aria-hidden="true ">&times;</span> -->
+                    </button>
+                </div>
+                {% endfor %} {% endif %} {% endwith %}
+                <div class="row justify-content-md-center my-5 " style="justify-content:center; ">
+                    <div class="card card-body ">
+                        <center> <b> COURIER BOY APPLICATION </b></center>
+                        <HR>
+                        <form action="courierBoyApplication" method="POST" class="row g-3 ">
+
+                            <div class="col-md-6 ">
+                                <label for="inputEmail4 " class="form-label ">First name <span style="color: red;">*</span></label>
+                                <input type="text " class="form-control " placeholder="First name " aria-label="First name " name="first_name" required onkeypress="return a(event);">
+                            </div>
+                            <div class="col-md-6 ">
+                                <label for="inputEmail4 " class="form-label ">Last name <span style="color: red;">*</span></label>
+
+                                <input type="text " class="form-control " placeholder="Last name " aria-label="Last name " name="last_name" required onkeypress="return a(event);">
+                            </div>
+
+                            <div class="col-md-6 ">
+                                <label for="inputEmail4 " class="form-label ">Email <span style="color: red;">*</span></label>
+                                <input type="email " class="form-control " id="inputEmail4 " placeholder="Example@gmail.com " name="email" required>
+                            </div>
+
+                            <div class="col-md-6 ">
+                                <label for="inputPassword4 " class="form-label ">Phone number <span style="color: red; ">*</span></label>
+                                <input type="text " class="form-control " id="inputPassword4 " placeholder="+91 12345 67890 " name="phone" required onkeypress="return event.charCode>=48 && event.charCode
+                                <=57 ">
+                            </div>
+                            <div class="col-md-6 ">
+                                <label class="form-label ">Password <span style="color: red;">*</span></label>
+                                <input type="password" class="form-control " placeholder="Enter password" name="password" required>
+                            </div>
+                            <div class="col-md-6 ">
+                                <label for="inputState " class="form-label ">City</label>
+                                <select id="inputState " class="form-select " name="city">
+                                <option selected>Bagalkot</option>
+                                <option>Bellary</option>
+                                <option>Bangalore Rural</option>
+                                <option>Bangalore Urban</option>
+                                <option>Bidar</option>
+                                <option>Chamarajanagar</option>
+                                <option>Chikballapur</option>
+                                <option>Chikmagalur</option>
+                                <option>Chitradurga</option>
+                                <option>Dakshina Kannada</option>
+                                <option>Davangere</option>
+                                <option>Dharwad</option>
+                                <option>Gadag</option>
+                                <option>Hassan</option>
+                                <option>Haveri</option>
+                                <option>Kalaburagi </option>
+                                <option>Kodagu</option>
+                                <option>Kolar</option>
+                                <option>Koppal</option>
+                                <option>Mandya</option>
+                                <option>Mysore</option>
+                                <option>Raichur</option>
+                                <option>Ramanagara</option>
+                                <option>Shivamogga </option>
+                                <option>Tumkur</option>
+                                <option>Udupi</option>
+                                <option>Uttara Kannada</option>
+                                <option>Vijayapura </option>
+                                <option>Yadgir</option>
+
+                                </select>
+                            </div>
+                            <div class="col-12 ">
+                                <label for="inputAddress " class="form-label ">Address <span style="color: red; ">*</span></label>
+                                <textarea class="form-control" placeholder="#121 main street" id="floatingTextarea" name="address" required></textarea>
+                            </div>
+
+                            <div class="col-md-12 ">
+                                <label for="inputState " class="form-label ">security Question</label>
+                                <select id="inputState " class="form-select " name="question">
+                                <option selected>what_is_your_nickName?</option>
+                                <option>what_is_our_date_of_birth?</option>
+                                <option>what_is_your_birthplace?</option>
+                                </select>
+                            </div><br>
+                            <div class="form-group ">
+                                <label>write your answer <span style="color: red;">*</span></label>
+                                <input type="text" class="form-control" name="answer" required>
+                            </div><br>
+
+
+
+                            <div class="col-12 ">
+                                <center>
+                                    <button type="submit " class="btn btn-primary ">Apply</button>
+
+                                </center>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a class="btn btn-primary " href="/ ">back to home page</a>
+                <br><br>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

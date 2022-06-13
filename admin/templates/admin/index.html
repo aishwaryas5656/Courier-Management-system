@@ -1,0 +1,62 @@
+{% extends 'adbase.html' %}{% block body%}
+<div class="container-fluid bg-secondary vh-100">
+    <br><br><br><br>
+    <div class="row d-flex justify-content-evenly">
+        <div class="card btn text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">Total Branch</div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    Branch
+                </h5>
+                <p class="card-text">
+                    <h1>{{ bs }}</h1>
+                </p>
+
+            </div>
+        </div>
+        <div class="card btn text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">Total Courier Boys</div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    Courier Boys
+                </h5>
+                <p class="card-text">
+
+                    <h1>{{ cbs }}</h1>
+
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="card btn text-light bg-info mb-3 " style="max-width: 18rem; ">
+            <div class="card-header ">courier</div>
+            <div class="card-body ">
+                <h5 class="card-title ">
+                    couriers
+                </h5>
+                <p class="card-text ">
+
+                    <h1>{{ cs }}</h1>
+
+                </p>
+            </div>
+        </div>
+        <div class="card btn text-dark bg-light mb-3 " style="max-width: 18rem; ">
+            <div class="card-header ">customers</div>
+            <div class="card-body ">
+                <h5 class="card-title ">
+                    customers
+                </h5>
+                <p class="card-text ">
+
+                    <h1>{{ us }}</h1>
+
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

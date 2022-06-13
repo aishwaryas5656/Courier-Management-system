@@ -1,0 +1,402 @@
+{% extends 'base.html' %} {% block title %}home{% endblock title %} {% block body %}
+
+<!-- ======= Hero Section ======= -->
+<span id="hero"></span> {% if session['name'] %} {% else %}
+<section id="hero" class="">
+    <div id="heroCarousel" data-bs-interval="5000" class="" data-bs-ride="carousel">
+        <div class="row  p-2 text-lgiht bg-opacity-10">
+            <div class="col-8">
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown">Welcome to <span>courier management system</span></h2>
+                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                </div>
+            </div>
+
+            <div class="col-4 z-3"> <br><br><br>
+                <div class="d-flex justify-content-center">
+                    <br> {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+                    <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show w-75 p-3" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </symbol>
+                          </svg>
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg> {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %} {% endif %} {% endwith %}
+                </div><br>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-9 ">
+                        <div class="card ">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex justify-content-center">Customer login</h5>
+                                <form action="/cu_login" method="POST">
+                                    <div class=" form-group ">
+                                        <label>Email:</label>
+                                        <input type="email" class="form-control " name="email" required>
+                                    </div>
+                                    <br>
+                                    <div class="form-group ">
+                                        <label>Password:</label>
+                                        <input type="password" class="form-control " name="password">
+                                        <a style="float: right;" href="reset_request">forgot password</a>
+                                    </div>
+                                    <br>
+                                    <div class="form-group ">
+                                        <button class="btn btn-primary ">Login</button>
+                                    </div>
+                                </form>
+                                <br> i don't have a account. <a href="register">create account</a>
+                            </div>
+                        </div>
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+</section>
+{% endif %}
+<!-- End Hero -->
+
+<!-- search bar -->
+<div class="container-fluid vh-100 vw-100"><br>
+    <div class="col"> <br><br>
+        <div class="d-flex justify-content-center">
+            <br><br> {% if session['name'] %}
+            <br> {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+            <div class="alert alert-primary d-flex align-items-center alert-dismissible fade show w-75 p-3" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <!-- <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </symbol> -->
+                  </svg>
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %} {% endif %} {% endwith %} {% endif %}
+        </div>
+    </div>
+    <div class="col">
+        <br>
+        <br>
+        <div class="row">
+            <center>
+                <h1 style="color:rgb(93, 154, 235)">{% if session['name'] %} Welcome to Courier Tracking System, {{ session['name'] }} {% else %} {% endif %}
+                </h1>
+            </center>
+
+        </div>
+        <br>
+        <form class="d-flex justify-content-center">
+            <input class="form-control me-2 d-flex justify-content-center" style="width:50%;" type="search" placeholder="Enter your Tracking id" aria-label="Search">
+            <button class="btn btn-outline-primary me-2" type="search">search</button>
+        </form>
+    </div>
+</div>
+<!-- end search bar -->
+
+<!-- profile -->
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalToggleLabel">Profile</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <fieldset disabled>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="disabledTextInput" class="form-label">Name</label>
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder={{ session[ 'name'] }}>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label for="disabledTextInput" class="form-label">phone number</label>
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder={{ session[ 'phone'] }}>
+                            </div>
+                            <div class="mb-3">
+                                <label for="disabledTextInput" class="form-label">Email</label>
+                                <input type="email" id="disabledTextInput" class="form-control" placeholder={{ session[ 'email'] }}>
+
+                            </div>
+                            <div class="mb-3">
+                                <label for="disabledTextInput" class="form-label">Password</label>
+                                <input type="password" id="disabledTextInput" class="form-control" placeholder='********'>
+                            </div>
+                            <div class="mb-3">
+                                <label for="disabledTextInput" class="form-label">Security question</label>
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder={{ session[ 'question'] }}>
+                            </div>
+                            <div class="mb-3">
+                                <label for="disabledTextInput" class="form-label">Answer</label>
+                                <input type="password" id="disabledTextInput" class="form-control" placeholder={{ session[ 'answer'] }}>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+            <div class=" modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel2">Update Your Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/profile" method="POST">
+                    <!-- <a href="# " class="close "></a> -->
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label class="form-label">Name: <span style="color: red;">*</span></label>
+                            <input type="text" class="form-control" name="name" onkeypress="return a(event);" value={{ session[ 'name'] }}>
+                        </div>
+
+
+                        <!--    onkeypress=" return event.charCode>=48 && event.charCode
+                                <=57 " -->
+                        <div class="form-group col-6 mb-3">
+                            <label class="form-label">phone number<span style="color: red;">*</span></label>
+                            <input type="text" id="disabledTextInput" class="form-control" name="phone" value={{ session[ 'phone'] }}>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label>Email: <span style="color: red;">*</span></label>
+                            <input type="email" class="form-control " name="email" required value={{ session[ 'email'] }}>
+                        </div><br>
+                        <br><br>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="inputState " class="form-label ">security Question</label>
+                            <select id="inputState " class="form-select " name="question">
+    
+                            <option selected>{{ session['question'] }}</option>
+                            <option>what_is_your_nickName?</option>
+                            <option>what_is_our_date_of_birth?</option>
+                            <option>what_is_your_birthplace?</option>
+                            </select>
+                        </div><br>
+
+                        <div class="mb-3 ">
+                            <label for="disabledTextInput " class="form-label ">Answer</label>
+                            <input type="password " id="disabledTextInput " class="form-control " name="answer" required value={{ session[ 'answer'] }}>
+                        </div>
+
+                        <div class="form-group ">
+                            <button>save</button>
+                        </div>
+
+
+                        <div class="form-group ">
+                            <a class="nav-link " data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" data-bs-dismiss="modal" href="#">change password</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="form-group modal-footer ">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">back</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade " id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true ">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel2">Update Your Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/change_password" method="POST">
+
+                    <div class="form-group">
+                        <label>old password: <span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="old_password">
+                    </div><br>
+
+                    <div class="form-group">
+                        <label>new password: <span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="new_password" required>
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <button>save</button>
+                    </div>
+
+                </form>
+            </div>
+            <div class="form-group modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">back</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--End modal-->
+
+<!-- ======= About Us Section ======= -->
+<div class="row ">
+    <div class="container vh-100 ">
+        <br id="about"><br>
+        <section id="about" class="about ">
+            <div class="container ">
+                <div class="section-title " data-aos="fade-up ">
+                    <h2>About Us</h2>
+                </div>
+
+                <div class="row content ">
+                    <div class="col-lg-6 " data-aos="fade-up " data-aos-delay="150 ">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                        <ul>
+                            <li><i class="ri-check-double-line "></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                            <li><i class="ri-check-double-line "></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
+                            <li><i class="ri-check-double-line "></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 " data-aos="fade-up " data-aos-delay="300 ">
+                        <p>
+                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+                            id est laborum.
+                        </p>
+                        <a href="# " class="btn-learn-more ">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- End About Us Section -->
+
+<!-- feedback -->
+<span id="feedback"></span>
+<section id="contact" class="contact">
+    <div class="container">
+
+        <div class="section-title" data-aos="zoom-out">
+            <h2>feedback</h2>
+            <p>feedback</p>
+        </div>
+
+        <div class="row mt-5">
+
+            <div class="col-lg-4" data-aos="fade-right">
+                <div class="info">
+                    <div class="address">
+                        <i class="bi bi-geo-alt"></i>
+                        <h4>Location:</h4>
+                        <p>A108 Adam Street, New York, NY 535022</p>
+                    </div>
+
+                    <div class="email">
+                        <i class="bi bi-envelope"></i>
+                        <h4>Email:</h4>
+                        <p>info@example.com</p>
+                    </div>
+
+                    <div class="phone">
+                        <i class="bi bi-phone"></i>
+                        <h4>Call:</h4>
+                        <p>+1 5589 55488 55s</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left">
+
+                <form action="feedback" method="post" role="form" class="php-email-form">
+                    <div class="row">
+
+                        <div class="col-md-12 form-group mt-3 mt-md-0">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                    </div>
+                    <div class="my-3">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                    </div>
+                    <div class="text-center"><button type="submit">Send Message</button></div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- end feedback -->
+
+<!-- complaint -->
+{% if session['name'] %}
+<span id="compliant"></span>
+<section id="contact" class="contact">
+    <div class="container">
+
+        <div class="section-title" data-aos="zoom-out">
+            <h2>compliant</h2>
+            <p>compliant</p>
+        </div>
+
+        <div class="row mt-5">
+
+            <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left">
+
+                <form action="complaint" method="post" role="form" class="php-email-form">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="cid" class="form-control" id="name" placeholder="courier id" required>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <input type="email" class="form-control" name="email" id="email" value={{ session[ 'email'] }} required disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                    </div>
+                    <div class="text-center"><button type="submit">Send Message</button></div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endif %} {% endblock body %}x

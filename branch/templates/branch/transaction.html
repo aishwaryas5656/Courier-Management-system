@@ -1,0 +1,66 @@
+{% extends 'brbase.html' %}{% block body%}
+<div class="container vh-100"><br><br><br>
+
+
+    <br> {% if contacts %} {% for contact in contacts %}
+
+    <div class="card d-flex flex-row justify-content-evenly ">
+        <div class="card text-dark bg-light mb-3 mt-3 " style="max-width: 20rem;">
+            <div class="card">
+                <div class="card-header">courier</div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <pre>
+Tracking id   : {{ contact.tid }}
+Quantity      : {{ contact.Qty }}
+delivery type : {{ contact.del_type}}
+shipment type : {{ contact.ship_type}}
+weight        : {{ contact.weight}}
+
+                        </pre>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="card text-dark bg-light mb-3 mt-3" style="max-width: 20rem;">
+            <div class="card">
+                <div class="card-header">sender details</div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <pre>
+sender_name      : {{ contact.s_name }}
+sender_number    : {{ contact.s_num }}
+sender_address   : {{ contact.s_add}}
+sender_city      : {{ contact.s_city}}
+sender_state     : {{ contact.s_state}}
+sender_zip       : {{ contact.s_zip}}
+                            </pre>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="card text-dark bg-light mb-3 mt-3" style="max-width: 20rem;">
+            <div class="card">
+                <div class="card-header">receiver details</div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <pre>
+receiver_name      : {{ contact.r_name }}
+receiver_number    : {{ contact.r_num }}
+receiver_address   : {{ contact.r_add}}
+receiver_city      : {{ contact.r_city}}
+receiver_state     : {{ contact.r_state}}
+receiver_zip       : {{ contact.r_zip}}
+                            </pre>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br> {% endfor %} {% else %} no transaction available {% endif %}
+</div>{% endblock %}

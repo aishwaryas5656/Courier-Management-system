@@ -1,0 +1,74 @@
+{% extends "brbase.html" %} {% block body %}
+<div class="container-fluid vh-100"><br><br><br> <br>{% if session['status']=="accepted" %}
+    <H1> {{session['status']}} </H1>
+    <div class="modal fade" id="exampleModalToggle_q" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalToggleLabel">Profile</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <fieldset disabled>
+                            <div class="row">
+                                <div class="col-7">
+                                    <label for="disabledTextInput" class="form-label">Name</label>
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder={{ session[ 'first_name'] }}>
+                                </div>
+                                <div class="col-5 mb-3">
+                                    <label for="disabledTextInput" class="form-label">phone number</label>
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder={{ session[ 'phone'] }}>
+                                </div>
+                                <div class="col-7 mb-3">
+                                    <label for="disabledTextInput" class="form-label">Email</label>
+                                    <input type="email" id="disabledTextInput" class="form-control" placeholder={{ session[ 'email'] }}>
+
+                                </div>
+                                <div class="col-5 mb-3">
+                                    <label for="disabledTextInput" class="form-label">Password</label>
+                                    <input type="password" id="disabledTextInput" class="form-control" placeholder='********'>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">address</label>
+                                    <input type="password" id="disabledTextInput" class="form-control" placeholder={{ session[ 'city'] }}>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Security question</label>
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder={{ session[ 'question'] }}>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Answer</label>
+                                    <input type="password" id="disabledTextInput" class="form-control" placeholder={{ session[ 'answer'] }}>
+                                </div>
+
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+                <div class=" modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#logout" data-bs-toggle="modal" data-bs-dismiss="modal">back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% elif session['status']=="decline" %}
+    <div class="container-fluid vh-100">
+        <h1>
+            Welcome to Courier Management System,mr/mrs {{session['first_name']}}<br> your application is decline..
+        </h1>
+        <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, reiciendis magnam! Ducimus atque delectus nulla temporibus molestias? Perferendis eligendi quasi fuga blanditiis, adipisci facilis temporibus quis, quia deserunt ad iure.</p>
+    </div>
+    {%else%}
+    <div class="container-fluid vh-100">
+        <h1>
+            Welcome to Courier Management System,mr/mrs {{session['first_name']}}<br> your application is in being proccess...
+        </h1>
+        <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, reiciendis magnam! Ducimus atque delectus nulla temporibus molestias? Perferendis eligendi quasi fuga blanditiis, adipisci facilis temporibus quis, quia deserunt ad iure.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
